@@ -1,6 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -92,8 +92,8 @@
 	--popover-foreground: oklch(0.26 0.01 80); /* #3e3730 */
 
 	/* Primária (dourado) */
-	--primary: oklch(0.78 0.16 85); /* #e5bb3c */
-	--primary-foreground: oklch(0.98 0.003 90); /* #f8f7f7 */
+	--primary: #ea5500;
+	--primary-foreground: rgba(249, 248, 246, 0.807); /* #f8f7f7 */
 
 	/* Secundária (roxo claro) */
 	--secondary: oklch(0.75 0.12 300); /* #ac8dec */
