@@ -1,8 +1,27 @@
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
-import { Product } from "@/components/Product";
-import temporaryData from "../../data.json";
+import { Product as ProductComponent } from "@/components/Product";
+import type { Product as ProductType } from "@/types/Product";
+
+import { db } from "../firebase";
 
 export function Catalog() {
+	const [products, setProducts] = useState<ProductType[]>([]);
+
+	const fetchProducts = async () => {
+		const querySnapshot = await getDocs(collection(db, "products"));
+		const data: ProductType[] = [];
+		querySnapshot.forEach((doc) => {
+			data.push({ id: doc.id, ...doc.data() } as ProductType);
+		});
+		setProducts(data);
+	};
+
+	useEffect(() => {
+		fetchProducts();
+	}, []);
+
 	return (
 		<>
 			<Header />
@@ -11,16 +30,8 @@ export function Catalog() {
 					Nossas Delícias
 				</h1>
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-					{temporaryData.map((product) => (
-						<Product
-							key={product.id}
-							id={product.id}
-							title={product.title}
-							tag={product.tag}
-							description={product.description}
-							price={product.price}
-							imageUrl={product.imageUrl}
-						/>
+					{products.map((product) => (
+						<ProductComponent key={product.id} {...product} />
 					))}
 				</div>
 			</main>
