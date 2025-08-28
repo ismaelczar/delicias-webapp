@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { CartContext } from "@/contexts/CartContext";
-import type { Product } from "@/types/Product";
+import type { Product as ProductType } from "@/types/Product";
 import { Button } from "./ui/button";
 
-// biome-ignore lint/suspicious/noRedeclare: <aa>
 export function Product({
 	id,
 	title,
@@ -11,9 +10,11 @@ export function Product({
 	description,
 	price,
 	imageUrl,
-}: Product) {
+	quantityDisponible,
+}: ProductType) {
 	const { addProductToCart, removeProductFromCart, cart } =
 		useContext(CartContext);
+
 	return (
 		<div
 			key={id}
@@ -26,11 +27,11 @@ export function Product({
 			/>
 
 			<div className="flex items-center gap-2">
-				{/** biome-ignore lint/complexity/useOptionalChain: <explanation> */}
+				{/** biome-ignore lint/complexity/useOptionalChain: <explanaation> */}
 				{tag &&
 					tag.map((t, index) => (
 						<span
-							// biome-ignore lint/suspicious/noArrayIndexKey: <true>
+							// biome-ignore lint/suspicious/noArrayIndexKey: <explanaation>
 							key={index}
 							className="text-xs text-yellow-600 font-semibold px-2 py-1 rounded-full bg-yellow-100 mb-2"
 						>
@@ -38,19 +39,22 @@ export function Product({
 						</span>
 					))}
 			</div>
+
 			<h2 className="text-lg font-bold mb-1">{title}</h2>
 			<p className="text-sm text-gray-500 mb-4">{description}</p>
+
 			<div className="flex items-center justify-between w-full mt-auto px-10">
 				<div className="flex items-center gap-1">
 					<span>R$</span>
 					<span className="font-bold text-3xl">{price}</span>
 				</div>
+
 				<div className="flex items-center gap-2">
 					<div className="flex items-center gap-1 bg-primary rounded-md px-2 py-1">
 						<Button
 							variant="ghost"
 							className="bg-primary text-white w-8 h-8 flex items-center justify-center rounded-md p-0 hover:bg-gray-200"
-							onClick={() => removeProductFromCart(id)}
+							onClick={() => id && removeProductFromCart(id)}
 						>
 							-
 						</Button>
@@ -68,6 +72,7 @@ export function Product({
 									description,
 									price,
 									imageUrl,
+									quantityDisponible,
 								})
 							}
 						>

@@ -5,7 +5,8 @@
 		"tag": ["Gourmet", "Tradicional"],
 		"description": "O Morango do Amor Tradicional, traz um morango fresco e selecionado, envolvido em brigadeiro de leite em pó e finalizado com uma irresistível calda caramelizada vermelha bem fininha..",
 		"price": 7.99,
-		"imageUrl": "/tradicional.png"
+		"imageUrl": "/tradicional.png",
+		"quantityDisponible": "1"
 	},
 	{
 		"id": 2,
@@ -13,7 +14,8 @@
 		"tag": ["Gourmet", "Especial"],
 		"description": "Morango do Amor completamente coberto com brigadeiro de Maracujá e cobertura fina e crocante de caramelo.",
 		"price": 7.99,
-		"imageUrl": "/maracuja.png"
+		"imageUrl": "/maracuja.png",
+		"quantityDisponible": "1"
 	},
 	{
 		"id": 3,
@@ -21,6 +23,7 @@
 		"tag": ["Gourmet"],
 		"description": "Morango com casquinha de chocolate crocante recheado com brigadeiro cremoso.",
 		"price": 7.99,
-		"imageUrl": "/casquinha.png"
+		"imageUrl": "/casquinha.png",
+		"quantityDisponible": "1"
 	}
 ]

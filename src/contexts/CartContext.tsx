@@ -8,7 +8,7 @@ interface CartItem extends Product {
 interface CartContextType {
 	cart: CartItem[];
 	addProductToCart: (product: Product) => void;
-	removeProductFromCart: (productId: number) => void;
+	removeProductFromCart: (productId: string | number) => void;
 }
 
 export const CartContext = createContext<CartContextType>(
@@ -39,7 +39,7 @@ export function CartProvider({ children }: CartProviderProps) {
 		});
 	}
 
-	function removeProductFromCart(productId: number) {
+	function removeProductFromCart(productId: string | number) {
 		setCart((prev) => {
 			const index = prev.findIndex((item) => item.id === productId);
 			if (index === -1) return prev;

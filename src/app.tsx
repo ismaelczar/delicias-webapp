@@ -1,15 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
-import { Catalog } from "./pages/Catalog";
+
+import { AppRouter } from "./routes/index.tsx";
 
 export function App() {
 	return (
-		<CartProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route element={<Catalog />} index />
-				</Routes>
-			</BrowserRouter>
-		</CartProvider>
+		<AuthProvider>
+			<CartProvider>
+				<BrowserRouter>
+					<AppRouter />
+				</BrowserRouter>
+			</CartProvider>
+		</AuthProvider>
 	);
 }
