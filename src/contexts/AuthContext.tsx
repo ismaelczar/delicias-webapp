@@ -24,15 +24,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		// onAuthStateChanged é um observador que notifica sobre mudanças no estado de auth.
-		// Ele também é executado na inicialização, verificando se há uma sessão ativa.
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
-			setLoading(false); // Finaliza o carregamento após a verificação inicial
+			setLoading(false);
 		});
 
-		// A função de limpeza do useEffect cancela a inscrição no observador
-		// quando o componente é desmontado, evitando vazamentos de memória.
 		return () => unsubscribe();
 	}, []);
 
@@ -44,8 +40,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 		logout: fazerLogout,
 	};
 
-	// Não renderiza os filhos até que a verificação inicial de auth seja concluída.
-	// Isso evita um "flash" da tela de login para um usuário já autenticado.
 	return (
 		<AuthContext.Provider value={value}>
 			{!loading && children}

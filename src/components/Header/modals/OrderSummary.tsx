@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "@/contexts/CartContext";
-import { Button } from "./ui/button";
+import { Button } from "../../ui/button";
 import {
 	DialogContent,
 	DialogDescription,
 	DialogFooter,
 	DialogHeader,
 	DialogTitle,
-} from "./ui/dialog";
+} from "../../ui/dialog";
 
 export function OrderSummary() {
 	const { cart } = useContext(CartContext);
