@@ -1,7 +1,8 @@
 import type { AuthError } from "firebase/auth";
+import { ArrowLeft } from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -30,7 +31,7 @@ const LoginPage: React.FC = () => {
 
 	useEffect(() => {
 		if (user) {
-			navigate("/catalogo", { replace: true });
+			navigate("/", { replace: true });
 		}
 	}, [user, navigate]);
 
@@ -53,10 +54,18 @@ const LoginPage: React.FC = () => {
 		}
 	};
 
+	const toggleFormMode = () => {
+		setIsLogin((prevIsLogin) => !prevIsLogin);
+		setError(null);
+	};
+
 	return (
 		<div className="flex items-center justify-center min-h-screen bg-muted/20">
 			<Card className="w-[350px] shadow-md">
 				<CardHeader>
+					<Link to="/" className="text-primary mb-4 inline-block">
+						<ArrowLeft />
+					</Link>
 					<CardTitle className="text-center text-2xl font-bold">
 						{isLogin ? "Login" : "Criar Conta"}
 					</CardTitle>
@@ -69,7 +78,9 @@ const LoginPage: React.FC = () => {
 				<CardContent>
 					<form onSubmit={handleSubmit} className="flex flex-col gap-3">
 						{error && (
-							<p className="text-sm text-red-500 text-center">{error}</p>
+							<p role="alert" className="text-sm text-red-500 text-center">
+								{error}
+							</p>
 						)}
 						<Input
 							type="email"
@@ -96,15 +107,10 @@ const LoginPage: React.FC = () => {
 					</form>
 					<button
 						type="button"
-						onClick={() => {
-							setIsLogin(!isLogin);
-							setError(null);
-						}}
+						onClick={toggleFormMode}
 						className="w-full text-sm text-destructive mt-4 underline hover:opacity-80"
 					>
-						{isLogin
-							? "Não tem uma conta? Registre-se"
-							: "Já tem uma conta? Faça login"}
+						{isLogin ? "Registre-se" : "Faça login"}
 					</button>
 				</CardContent>
 			</Card>

@@ -1,6 +1,6 @@
 import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/Header/Header";
 import { Product as ProductComponent } from "@/components/Product";
 import type { Product as ProductType } from "@/types/Product";
 
@@ -9,16 +9,15 @@ import { db } from "../firebase";
 export function Catalog() {
 	const [products, setProducts] = useState<ProductType[]>([]);
 
-	const fetchProducts = async () => {
-		const querySnapshot = await getDocs(collection(db, "products"));
-		const data: ProductType[] = [];
-		querySnapshot.forEach((doc) => {
-			data.push({ id: doc.id, ...doc.data() } as ProductType);
-		});
-		setProducts(data);
-	};
-
 	useEffect(() => {
+		const fetchProducts = async () => {
+			const querySnapshot = await getDocs(collection(db, "products"));
+			const data: ProductType[] = [];
+			querySnapshot.forEach((doc) => {
+				data.push({ id: doc.id, ...doc.data() } as ProductType);
+			});
+			setProducts(data);
+		};
 		fetchProducts();
 	}, []);
 

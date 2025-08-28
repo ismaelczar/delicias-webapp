@@ -1,16 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import { Catalog } from "@/pages/Catalog";
 import LoginPage from "@/pages/LoginPage";
-import { ProtectedRoute } from "@/routes/ProtectedRoute";
+import ProductPage from "@/pages/ProductPage";
 
 export function AppRouter() {
 	return (
 		<Routes>
-			<Route path="/" element={<LoginPage />} index />
-
-			<Route element={<ProtectedRoute />}>
-				<Route path="/catalogo" element={<Catalog />} />
-			</Route>
+			<Route path="/" element={<Catalog />} index />
+			<Route path="/login" element={<LoginPage />} />
+			<Route path="/cadastrar-novo-produto" element={<ProductPage />} />
 		</Routes>
 	);
 }
