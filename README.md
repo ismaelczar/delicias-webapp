@@ -5,7 +5,23 @@
 O Delícias WebApp é uma aplicação web que simula um e-commerce simples, onde os clientes da Delícias podem visualizar os produtos disponíveis e fazer pedidos diretamente pelo WhatsApp.
 O objetivo é facilitar a experiência de compra, mostrando o cardápio de forma clara e prática.
 
-Acesse o projeto online: [Site](delicias-webapp.vercel.app) 🌐
+Acesse o projeto online: [Site](https://docesdaisa.vercel.app/) 🌐
+
+📂 Estrutura do Projeto (resumida)
+```
+delicias-webapp/
+├── public/          # Arquivos estáticos
+├── src/
+│   ├── assets/      # Imagens, ícones e estilos globais
+│   ├── components/  # Componentes reutilizáveis (UI, layout, etc.)
+│   ├── pages/       # Páginas principais do app
+│   ├── routes/      # Configuração de rotas (React Router DOM)
+│   ├── services/    # Integração com Firebase e APIs
+│   ├── utils/       # Funções utilitárias
+│   ├── main.tsx     # Ponto de entrada da aplicação
+│   └── App.tsx      # Componente raiz
+└── package.json
+```
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -13,6 +29,7 @@ O projeto foi construído utilizando as seguintes tecnologias:
 
 - **TypeScript**: Para uma base de código mais robusta e com tipagem estática.
 - **React/JSX**: (Inferido pela presença de dependências JSX) Para a construção da interface de usuário.
+- **Firebase** - Plataforma para desenvolvimento de aplicativos.
 - **Biome**: Como ferramenta para formatação e linting do código, garantindo a qualidade e consistência.
 - **Node.js**: Ambiente de execução.
 
